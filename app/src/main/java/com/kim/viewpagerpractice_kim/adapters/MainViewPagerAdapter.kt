@@ -10,17 +10,16 @@ import com.kim.viewpagerpractice_kim.NameFragment
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence? {
-        if(position == 0){
-            return "이름"
-        }
-        else if(position == 1){
-            return "내 정보"
+
+        return when(position){
+
+            0 -> "이름"
+            1 -> "내 정보"
+            else -> "인사말"
 
         }
 
-        else{
-            return "인사말"
-        }
+
     }
 
     override fun getCount(): Int {
@@ -30,15 +29,11 @@ class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
 
-        if(position == 0){
-            return NameFragment()
-        }
-        else if(position == 1){
-            return MyinfoFragment()
-        }
-        else{
+      return when(position){
+          0 -> NameFragment()
+          1 -> MyinfoFragment()
+          else -> GreetingsFragment()
 
-            return GreetingsFragment()
-        }
+      }
     }
 }
